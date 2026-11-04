@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090711">
+  <title>هدية صغيرة لنونو 🤍</title>
+  <style>
+    :root {
+      --bg: #080711;
+      --purple: #9e78d6;
+      --lavender: #d9c7ff;
+      --muted: #c7bfd4;
+      --glass: rgba(18, 14, 30, .72);
+      --line: rgba(220, 202, 255, .17);
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--bg); }
+    body {
+      margin: 0; min-height: 100vh; overflow-x: hidden; color: #fff;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(94, 50, 139, .25), transparent 55%),
+        radial-gradient(ellipse at 15% 10%, rgba(67, 45, 104, .18), transparent 42%),
+        linear-gradient(145deg, #090711 0%, #100b1b 48%, #07060d 100%);
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    }
+    body::before, body::after {
+      content: ""; position: fixed; inset: -20%; pointer-events: none; z-index: 0;
+      background-image: radial-gradient(1px 1px at 12% 18%, #fff 98%, transparent),
+        radial-gradient(1px 1px at 72% 13%, #d8c5ff 98%, transparent),
+        radial-gradient(2px 2px at 83% 71%, #fff 98%, transparent),
+        radial-gradient(1px 1px at 35% 78%, #d8c5ff 98%, transparent),
+        radial-gradient(1px 1px at 58% 44%, #fff 98%, transparent),
+        radial-gradient(1px 1px at 22% 58%, #fff 98%, transparent),
+        radial-gradient(1px 1px at 92% 34%, #d8c5ff 98%, transparent);
+      background-size: 370px 320px; opacity: .5; animation: drift 70s linear infinite;
+    }
+    body::after { opacity: .2; transform: scale(1.35); animation-duration: 110s; animation-direction: reverse; }
+    @keyframes drift { from { transform: translateY(0); } to { transform: translateY(90px); } }
+    .stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .star { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #fff; opacity: .55; box-shadow: 0 0 9px 2px rgba(215,192,255,.55); animation: twinkle 3.5s ease-in-out infinite; }
+    @keyframes twinkle { 0%,100% { opacity: .18; transform: scale(.7); } 50% { opacity: .9; transform: scale(1.4); } }
+    .topbar { position: fixed; top: 14px; left: 14px; z-index: 10; display: flex; gap: 8px; align-items: center; }
+    .music-btn {
+      border: 1px solid var(--line); color: #eee7fb; background: rgba(18,13,29,.7);
+      border-radius: 999px; padding: 9px 13px; font-size: 13px; cursor: pointer;
+      backdrop-filter: blur(12px); transition: .25s ease;
+    }
+    .music-btn:hover { border-color: rgba(219,194,255,.55); background: rgba(42,29,61,.82); }
+    main { position: relative; z-index: 1; min-height: 100vh; display: grid; place-items: center; padding: 82px 18px 28px; }
+    .screen { display: none; width: min(760px, 100%); min-height: min(650px, calc(100vh - 110px)); align-items: center; justify-content: center; text-align: center; animation: appear .9s ease both; }
+    .screen.active { display: flex; }
+    @keyframes appear { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .panel { width: 100%; padding: clamp(28px, 6vw, 58px) clamp(20px, 5vw, 52px); border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(145deg, rgba(25,18,39,.76), rgba(9,8,17,.76)); box-shadow: 0 25px 100px rgba(0,0,0,.45), inset 0 1px rgba(255,255,255,.045); backdrop-filter: blur(15px); }
+    .eyebrow { color: #bca4df; letter-spacing: .12em; font-size: 12px; margin-bottom: 18px; }
+    h1, h2, p { margin-top: 0; }
+    h1 { font-size: clamp(27px, 6vw, 46px); line-height: 1.6; font-weight: 600; text-shadow: 0 0 28px rgba(182,143,233,.25); margin-bottom: 28px; }
+    h2 { font-size: clamp(24px, 5vw, 38px); line-height: 1.55; font-weight: 600; color: #f5efff; margin-bottom: 20px; }
+    .sub { color: var(--muted); line-height: 2; font-size: clamp(14px, 3vw, 17px); }
+    .heart-orbit { width: 118px; height: 118px; margin: 0 auto 26px; border: 1px solid rgba(204,174,255,.28); border-radius: 50%; display: grid; place-items: center; position: relative; box-shadow: 0 0 55px rgba(137,91,191,.15), inset 0 0 35px rgba(137,91,191,.1); }
+    .heart-orbit::before, .heart-orbit::after { content: ""; position: absolute; inset: -12px; border: 1px solid rgba(204,174,255,.11); border-radius: 50%; animation: pulse 4s ease-in-out infinite; }
+    .heart-orbit::after { inset: -24px; animation-delay: 1s; }
+    @keyframes pulse { 0%,100% { opacity: .25; transform: scale(.96); } 50% { opacity: .75; transform: scale(1.04); } }
+    .heart { font-size: 42px; filter: drop-shadow(0 0 18px rgba(238,185,255,.62)); animation: heartbeat 2.5s ease-in-out infinite; }
+    @keyframes heartbeat { 0%,100% { transform: scale(1); } 8% { transform: scale(1.12); } 16% { transform: scale(1); } 24% { transform: scale(1.08); } 32% { transform: scale(1); } }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 8px; min-height: 48px;
+      padding: 12px 25px; border: 1px solid rgba(224,205,255,.45); border-radius: 999px;
+      color: #fff; background: linear-gradient(110deg, rgba(106,73,145,.82), rgba(58,39,82,.88));
+      box-shadow: 0 8px 30px rgba(116,76,160,.22); font: inherit; font-size: 15px; cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; margin-top: 12px;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(145,104,191,.32); border-color: rgba(240,225,255,.8); }
+    .btn:active { transform: translateY(0); }
+    .message { text-align: right; max-width: 650px; margin: 24px auto 0; }
+    .message-line { color: #eee8f8; opacity: 0; transform: translateY(10px); line-height: 2.15; font-size: clamp(16px, 3.7vw, 19px); margin: 0 0 13px; transition: opacity .8s ease, transform .8s ease; }
+    .message-line.show { opacity: 1; transform: translateY(0); }
+    .message-line.emphasis { color: #e1ccff; font-weight: 600; }
+    .continue-wrap { margin-top: 28px; opacity: 0; transition: opacity .8s ease; }
+    .continue-wrap.show { opacity: 1; }
+    .surprise-stars { font-size: 25px; letter-spacing: 13px; color: #d8c5ff; text-shadow: 0 0 18px rgba(220,196,255,.75); margin: 6px 0 26px; animation: shimmer 3s ease-in-out infinite; }
+    @keyframes shimmer { 0%,100% { opacity: .45; filter: blur(.2px); } 50% { opacity: 1; filter: blur(0); } }
+    .final-text { font-size: clamp(16px, 3.7vw, 19px); line-height: 2.25; color: #e9e1f2; max-width: 620px; margin: 0 auto; }
+    .final-line { opacity: 0; transform: translateY(10px); transition: all 1s ease; }
+    .final-line.show { opacity: 1; transform: translateY(0); }
+    .signature { color: #e1caff; font-size: clamp(20px, 4.5vw, 25px); font-weight: 600; margin-top: 28px; text-shadow: 0 0 20px rgba(178,132,225,.28); }
+    .end-heart { font-size: 36px; margin-top: 18px; opacity: 0; transition: opacity 1.2s ease; filter: drop-shadow(0 0 18px rgba(255,255,255,.45)); }
+    .end-heart.show { opacity: 1; }
+    .footnote { color: rgba(205,190,225,.48); font-size: 11px; margin-top: 30px; }
+    @media (max-width: 520px) {
+      main { padding: 76px 13px 20px; }
+      .screen { min-height: calc(100vh - 96px); }
+      .panel { border-radius: 23px; }
+      .message { text-align: right; }
+      .music-btn { padding: 8px 11px; font-size: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="topbar">
+    <button class="music-btn" id="musicToggle" type="button" aria-pressed="false">♫ تشغيل البيانو</button>
+  </div>
+  <main>
+    <section class="screen active" id="intro" aria-label="المقدمة">
+      <div class="panel">
+        <div class="heart-orbit"><div class="heart">🤍</div></div>
+        <div class="eyebrow">A LITTLE SURPRISE FOR YOU</div>
+        <h1>انت فكرتيني نسيت عيد الفلانتاين صح 😌🫵🏻</h1>
+        <p class="sub">في حاجات بسيطة… بس معمولة من القلب.</p>
+        <button class="btn" id="startBtn" type="button">🤍اضغطي هنا يا نونو😉🤍</button>
+      </div>
+    </section>
+
+    <section class="screen" id="letter" aria-label="رسالة الحب">
+      <div class="panel">
+        <div class="eyebrow">A FEW WORDS FROM MY HEART</div>
+        <h2>كلام من قلبي ليكي 🤍</h2>
+        <div class="message" id="message"></div>
+        <div class="continue-wrap" id="letterContinue">
+          <button class="btn" id="toSurprise" type="button">كمّلي يا نونو 🤍</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="surprise" aria-label="المفاجأة">
+      <div class="panel">
+        <div class="surprise-stars">✦　✧　✦</div>
+        <div class="eyebrow">JUST FOR YOU</div>
+        <h2>لسه في كلام حلو كتير متقالش...</h2>
+        <p class="sub">بس المفاجأة دي ليكي إنتِ يا نونو 🤍</p>
+        <button class="btn" id="toEnding" type="button">افتحي المفاجأة ✨</button>
+      </div>
+    </section>
+
+    <section class="screen" id="ending" aria-label="الرسالة الختامية">
+      <div class="panel">
+        <div class="eyebrow">UNTIL THE NEXT CHAPTER</div>
+        <h2>ولسه الحكاية مكملة... 🤍</h2>
+        <div class="final-text">
+          <p class="final-line" id="end1">يمكن الهدية دي تخلص، والصفحات تقفل، والنجوم تختفي من الشاشة، بس في حاجة واحدة مش هتتغير...</p>
+          <p class="final-line" id="end2">إن وجودك في حياتي من أجمل الحاجات اللي حصلتلي، وإن مهما عدى وقت، هيفضل ليكي مكانة خاصة محدش يقدر ياخدها.</p>
+          <p class="final-line" id="end3">كل سنة وإنتِ أجمل صدفة، وأحلى حكاية، وأقرب قلب لقلبي يا نونو.</p>
+          <div class="final-line signature" id="end4">بحبك يا بسملة 🤍<br>— حبيب عمرك فارس.</div>
+        </div>
+        <div class="end-heart" id="endHeart">🤍</div>
+        <div class="footnote">MADE WITH LOVE</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // نجوم صغيرة متلألئة في الخلفية
+    const starField = document.getElementById('stars');
+    for (let i = 0; i < 65; i++) {
+      const star = document.createElement('span');
+      star.className = 'star';
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 4}s`;
+      star.style.animationDuration = `${2.5 + Math.random() * 3}s`;
+      if (i % 7 === 0) { star.style.width = '3px'; star.style.height = '3px'; }
+      starField.appendChild(star);
+    }
+
+    const screens = ['intro', 'letter', 'surprise', 'ending'];
+    function showScreen(id) {
+      screens.forEach(name => document.getElementById(name).classList.remove('active'));
+      const next = document.getElementById(id);
+      next.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // موسيقى بيانو أصلية مُولّدة داخل المتصفح، وتبدأ بعد أول ضغطة من الزائرة.
+    let audioContext = null;
+    let musicTimer = null;
+    let musicOn = false;
+    let noteIndex = 0;
+    const musicButton = document.getElementById('musicToggle');
+    const notes = [
+      [261.63, 329.63, 392.00], [220.00, 261.63, 329.63],
+      [174.61, 220.00, 261.63], [196.00, 246.94, 293.66]
+    ];
+    function playSoftNote(frequency, startTime, duration = 1.65, volume = 0.035) {
+      if (!audioContext) return;
+      const master = audioContext.createGain();
+      const lowpass = audioContext.createBiquadFilter();
+      lowpass.type = 'lowpass'; lowpass.frequency.setValueAtTime(2400, startTime);
+      master.gain.setValueAtTime(0.0001, startTime);
+      master.gain.exponentialRampToValueAtTime(volume, startTime + 0.025);
+      master.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+      lowpass.connect(master); master.connect(audioContext.destination);
+      const fundamental = audioContext.createOscillator();
+      const overtone = audioContext.createOscillator();
+      const overtoneGain = audioContext.createGain();
+      fundamental.type = 'triangle'; fundamental.frequency.setValueAtTime(frequency, startTime);
+      overtone.type = 'sine'; overtone.frequency.setValueAtTime(frequency * 2.01, startTime);
+      overtoneGain.gain.setValueAtTime(0.16, startTime);
+      fundamental.connect(lowpass); overtone.connect(overtoneGain); overtoneGain.connect(lowpass);
+      fundamental.start(startTime); overtone.start(startTime);
+      fundamental.stop(startTime + duration + 0.03); overtone.stop(startTime + duration + 0.03);
+    }
+    function playBar() {
+      if (!audioContext || !musicOn) return;
+      const chord = notes[noteIndex % notes.length];
+      const now = audioContext.currentTime + 0.04;
+      playSoftNote(chord[0] / 2, now, 2.7, 0.022);
+      playSoftNote(chord[1], now + 0.12, 2.2, 0.019);
+      playSoftNote(chord[2], now + 0.25, 2.4, 0.018);
+      playSoftNote(chord[1] * 2, now + 0.78, 1.45, 0.011);
+      playSoftNote(chord[2] * 2, now + 1.42, 1.55, 0.010);
+      noteIndex++;
+    }
+    async function startMusic() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) { musicButton.textContent = '♫ الموسيقى غير مدعومة'; return; }
+        if (!audioContext) audioContext = new AudioCtx();
+        if (audioContext.state === 'suspended') await audioContext.resume();
+        if (!musicOn) {
+          musicOn = true; noteIndex = 0; playBar();
+          musicTimer = window.setInterval(playBar, 2800);
+        }
+        musicButton.textContent = '♫ كتم البيانو';
+        musicButton.setAttribute('aria-pressed', 'true');
+      } catch (error) {
+        musicButton.textContent = 'تعذّر تشغيل الصوت';
+      }
+    }
+    function stopMusic() {
+      musicOn = false;
+      if (musicTimer) window.clearInterval(musicTimer);
+      musicTimer = null;
+      musicButton.textContent = '♫ تشغيل البيانو';
+      musicButton.setAttribute('aria-pressed', 'false');
+    }
+    musicButton.addEventListener('click', () => musicOn ? stopMusic() : startMusic());
+
+    const messageParts = [
+      'انا مش مجهز الكلام اللي انا هقوله ده بس انا هقول كل اللي في قلبي وكل اللي بحسه تجاهك خلال كل السنين اللي كنت فيها معايا',
+      'انت يا بسمله فعلا اكتر حد حبيته بسبب انا قلبي هو اللي حبك بس السبب خلاني احبك اكتر واكتر هو نفس السبب اللي بيميزك عن أي حد انا عرفته في حياتي',
+      'والسبب ده هو أن انت عمرك ما زعلتيني بجد مش اقصد الهزار التقيل بتاعنا اللي بنهزره ده وكده لا ده عادي',
+      'اللي انا أقصده انك عمرك ما حاولتي تزعليني بأي شكل من الأشكال و حتى لو كنت متدايق كنت بتهوني عليا',
+      'كنت باختصار 🤍احن شخص عليا🤍',
+      'وكمان بتحبيني لشخصي زي ما بحبك لشخصك يعني مثلا حبيتيني قبل ما اعمل فورمه وحبيتيني بعدها بردو نفس الحب وانا كمان حبيتك في اي وقت من الأوقات نفس الحب لاني بحبك لشخصك يا بسمله...',
+      'في النهايه عايز اقولك من قلبي بجد أن انت اجمل شخص في حياتي انا بحبك جدا سواء كأخت أو حبيبه أو صاحبه انت بالنسبالي ده كله',
+      '...حبيب عمرك فارس🤍'
+    ];
+    const messageBox = document.getElementById('message');
+    let revealTimers = [];
+    function clearRevealTimers() { revealTimers.forEach(window.clearTimeout); revealTimers = []; }
+    function revealLetter() {
+      clearRevealTimers(); messageBox.innerHTML = '';
+      document.getElementById('letterContinue').classList.remove('show');
+      messageParts.forEach((part, index) => {
+        const line = document.createElement('p');
+        line.className = 'message-line' + ((index === 4 || index === 7) ? ' emphasis' : '');
+        line.textContent = part;
+        messageBox.appendChild(line);
+        revealTimers.push(window.setTimeout(() => line.classList.add('show'), 700 + index * 1550));
+      });
+      revealTimers.push(window.setTimeout(() => document.getElementById('letterContinue').classList.add('show'), 700 + messageParts.length * 1550));
+    }
+
+    document.getElementById('startBtn').addEventListener('click', async () => {
+      await startMusic(); showScreen('letter'); revealLetter();
+    });
+    document.getElementById('toSurprise').addEventListener('click', () => showScreen('surprise'));
+    document.getElementById('toEnding').addEventListener('click', () => {
+      showScreen('ending');
+      ['end1', 'end2', 'end3', 'end4'].forEach((id, index) => {
+        const item = document.getElementById(id);
+        item.classList.remove('show');
+        window.setTimeout(() => item.classList.add('show'), 650 + index * 1900);
+      });
+      document.getElementById('endHeart').classList.remove('show');
+      window.setTimeout(() => document.getElementById('endHeart').classList.add('show'), 650 + 4 * 1900);
+    });
+  </script>
+</body>
+</html>
